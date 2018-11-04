@@ -63,27 +63,27 @@ public class AddItemActivity extends AppCompatActivity implements View.OnClickLi
             if (data != null && data.getExtras() != null) {
                 Bitmap imageBitmap = (Bitmap) data.getExtras().get("data");
                 newItemImage.setImageBitmap(imageBitmap);
-                String savePath = saveToInternalStorage(imageBitmap);
-                Toast.makeText(AddItemActivity.this, savePath, Toast.LENGTH_LONG).show();
-                Clothing newItem = new Clothing(savePath);
+                String saveFile = saveToInternalStorage(imageBitmap);
+                Toast.makeText(AddItemActivity.this, saveFile, Toast.LENGTH_LONG).show();
+                Clothing newItem = new Clothing(saveFile);
                 StorageManager storage = new StorageManager();
-                storage.saveObjectToFile(AddItemActivity.this, newItem);
+                storage.saveObjectToFile(AddItemActivity.this, AddItemActivity.this, newItem);
             }
         }
     }
 
     private File createImageFile() throws IOException {
-// Create an image file name
+        // Create an image file name
         String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
-        String imageFileName = "JPEG_" + timeStamp + "_";
+        String imageFileName = "BMP_" + timeStamp + "_";
         File storageDir = getExternalFilesDir(Environment.DIRECTORY_PICTURES);
         File image = File.createTempFile(
                 imageFileName,  /* prefix */
-                ".jpg",         /* suffix */
+                ".bmp",         /* suffix */
                 storageDir      /* directory */
         );
 
-// Save a file: path for use with ACTION_VIEW intents
+        // Save a file: path for use with ACTION_VIEW intents
         mCurrentPhotoPath = image.getAbsolutePath();
         return image;
 
@@ -109,10 +109,12 @@ public class AddItemActivity extends AppCompatActivity implements View.OnClickLi
 
     private String saveToInternalStorage(Bitmap bitmapImage){
         ContextWrapper cw = new ContextWrapper(getApplicationContext());
+        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
+        String imageFileName = "BMP_" + timeStamp + ".bmp";
         // path to /data/data/yourapp/app_data/imageDir
         File directory = cw.getDir("imageDir", Context.MODE_PRIVATE);
         // Create imageDir
-        File mypath=new File(directory,"profile.jpg");
+        File mypath=new File(directory, imageFileName);
 
         FileOutputStream fos = null;
         try {
@@ -128,7 +130,7 @@ public class AddItemActivity extends AppCompatActivity implements View.OnClickLi
                 e.printStackTrace();
             }
         }
-        return directory.getAbsolutePath();
+        return directory.getAbsolutePath() + "/" + imageFileName;
     }
 
 }

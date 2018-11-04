@@ -16,7 +16,15 @@ import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.squareup.picasso.Picasso;
+
+import java.io.File;
+import java.util.ArrayList;
+
 public class ClosetActivity extends AppCompatActivity {
+
+    private StorageManager storage;
+    private ArrayList<Clothing> itemArray;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +41,10 @@ public class ClosetActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
+
+        storage = new StorageManager();
+
+        itemArray = storage.loadClothingItems(ClosetActivity.this);
 
         GridView gridview = (GridView) findViewById(R.id.gridview);
         gridview.setAdapter(new ImageAdapter(this));
@@ -54,7 +66,7 @@ public class ClosetActivity extends AppCompatActivity {
         }
 
         public int getCount() {
-            return mThumbIds.length;
+            return itemArray.size();
         }
 
         public Object getItem(int position) {
@@ -77,8 +89,8 @@ public class ClosetActivity extends AppCompatActivity {
             } else {
                 imageView = (ImageView) convertView;
             }
-
-            imageView.setImageResource(mThumbIds[position]);
+            String imageLoc = itemArray.get(position).getImageLocation();
+            Picasso.with(ClosetActivity.this).load(new File(imageLoc)).into(imageView);
             return imageView;
         }
 
