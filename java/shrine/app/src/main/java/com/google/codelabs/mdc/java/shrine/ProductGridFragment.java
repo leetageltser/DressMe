@@ -42,7 +42,19 @@ public class ProductGridFragment extends Fragment {
         int largePadding = getResources().getDimensionPixelSize(R.dimen.shr_product_grid_spacing);
         int smallPadding = getResources().getDimensionPixelSize(R.dimen.shr_product_grid_spacing_small);
         recyclerView.addItemDecoration(new ProductGridItemDecoration(largePadding, smallPadding));
+        /*gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
+            public void onItemClick(AdapterView<?> parent, View v,
+
+                                    int position, long id) {
+
+                Toast.makeText(PhotoGalleryActivity.this, "" + position,
+
+                        Toast.LENGTH_SHORT).show();
+
+            }
+
+        });*/
         return view;
     }
 
