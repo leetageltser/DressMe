@@ -1,10 +1,12 @@
 package dressmeapp.com.dressme;
 
+import java.io.Serializable;
+
 /**
  * Created by Param on 11/3/2018.
  */
 
-public class Clothing {
+public class Clothing implements Serializable {
     private String clothingType;
     private String imageLocation;
 
