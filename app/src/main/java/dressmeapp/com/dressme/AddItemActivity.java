@@ -1,6 +1,5 @@
 package dressmeapp.com.dressme;
 
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.ContextWrapper;
 import android.content.Intent;
@@ -12,6 +11,7 @@ import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -30,8 +30,10 @@ public class AddItemActivity extends AppCompatActivity implements View.OnClickLi
     private static final int CAMERA_REQUEST_CODE = 1;
     private ImageView uploadImageView;
     private String downloadUrlString;
-    private ProgressDialog mProgress;
+
     private ImageView newItemImage;
+    private CheckBox partyCheckBox, businessCheckBox, casualCheckBox, beachCheckBox, schoolCheckBox;
+    private String imageLocation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +47,11 @@ public class AddItemActivity extends AppCompatActivity implements View.OnClickLi
                 dispatchTakePictureIntent();
             }
         });
-
+        partyCheckBox = (CheckBox) findViewById(R.id.partyCheckBox);
+        businessCheckBox = (CheckBox) findViewById(R.id.businessCheckBox);
+        casualCheckBox = (CheckBox) findViewById(R.id.casualCheckBox);
+        beachCheckBox = (CheckBox) findViewById(R.id.beachCheckBox);
+        schoolCheckBox = (CheckBox) findViewById(R.id.schoolCheckBox);
     }
 
 

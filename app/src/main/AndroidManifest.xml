@@ -31,9 +31,10 @@
             android:name=".SettingsActivity"
             android:label="@string/title_activity_settings" />
         <activity
+            android:parentActivityName=".HomeActivity"
             android:name=".AboutActivity"
             android:label="@string/title_activity_about"
-            android:theme="@style/CustomToolbarStyle"></activity>
+            android:theme="@style/CustomToolbarStyle" />
     </application>
 
 </manifest>

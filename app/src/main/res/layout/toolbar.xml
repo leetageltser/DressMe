@@ -5,6 +5,4 @@
     android:background="@color/colorPrimaryDark"
     android:elevation="10dp"
     android:theme="@style/CustomToolbarStyle"
-    android:popupTheme="@style/CustomPopupStyle">
-
-</android.support.v7.widget.Toolbar>
+    android:popupTheme="@style/CustomPopupStyle" />
