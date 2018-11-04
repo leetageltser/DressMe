@@ -94,12 +94,6 @@ public class ClosetActivity extends AppCompatActivity {
             return imageView;
         }
 
-        private Integer[] mThumbIds = {
-                R.drawable.sample_2, R.drawable.sample_3,
-                R.drawable.sample_4, R.drawable.sample_5,
-                R.drawable.sample_0, R.drawable.sample_1,
-        };
-
     }
 
     @Override
@@ -117,7 +111,7 @@ public class ClosetActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.settings_name) {
             return true;
         }
 

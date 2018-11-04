@@ -1,6 +1,5 @@
 package dressmeapp.com.dressme;
 
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.ContextWrapper;
 import android.content.Intent;
@@ -14,27 +13,33 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ImageView;
+import android.widget.RadioButton;
+import android.widget.Switch;
 import android.widget.Toast;
 
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
 public class AddItemActivity extends AppCompatActivity implements View.OnClickListener{
 
     protected Context context;
-    private Button addPhotoButton;
+    private Button addPhotoButton, addItemButton;
     private String mCurrentPhotoPath;
     private Uri photoURI;
     private static final int CAMERA_REQUEST_CODE = 1;
     private ImageView uploadImageView;
     private String downloadUrlString;
-    private ProgressDialog mProgress;
     private ImageView newItemImage;
     private CheckBox partyCheckBox, businessCheckBox, casualCheckBox, beachCheckBox, schoolCheckBox;
+    private Switch rainSwitch, tempSwitch;
+    private RadioButton topRad, bottomRad, accessoryRad;
     private String imageLocation;
+    private String rainOrShine;
+    private String warmOrCold;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +58,79 @@ public class AddItemActivity extends AppCompatActivity implements View.OnClickLi
         casualCheckBox = (CheckBox) findViewById(R.id.casualCheckBox);
         beachCheckBox = (CheckBox) findViewById(R.id.beachCheckBox);
         schoolCheckBox = (CheckBox) findViewById(R.id.schoolCheckBox);
+
+        rainSwitch = (Switch) findViewById(R.id.rainSwitch);
+        tempSwitch = (Switch) findViewById(R.id.tempSwitch);
+
+        topRad = (RadioButton) findViewById(R.id.topButton);
+        bottomRad = (RadioButton) findViewById(R.id.bottomButton);
+        accessoryRad = (RadioButton) findViewById(R.id.accessoryButton);
+
+        addItemButton = (Button) findViewById(R.id.addToClosetButton);
+        addItemButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(imageLocation == null) {
+                    Toast.makeText(AddItemActivity.this, "No Image Found, Add a new image",
+                            Toast.LENGTH_LONG).show();
+                } else {
+                    String[] tags = getTags();
+                    String[] weather = getWeather();
+                    Clothing newItem = new Clothing(imageLocation);
+                    newItem.setTags(tags);
+                    newItem.setWeather(weather);
+                    if(topRad.isChecked()) {
+                        newItem.setToTop();
+                    } else if(bottomRad.isChecked()) {
+                        newItem.setToBottom();
+                    } else if(accessoryRad.isChecked()) {
+                        newItem.setToAccessory();
+                    }
+                    StorageManager storage = new StorageManager();
+                    storage.saveObjectToFile(AddItemActivity.this, AddItemActivity.this, newItem);
+                    Toast.makeText(AddItemActivity.this, "Added Item", Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+    }
+
+    public String[] getTags() {
+        ArrayList<String> tagArray = new ArrayList<>();
+        if(partyCheckBox.isChecked()) {
+            tagArray.add("party");
+        }
+        if(businessCheckBox.isChecked()) {
+            tagArray.add("business");
+        }
+        if(casualCheckBox.isChecked()) {
+            tagArray.add("casual");
+        }
+        if(beachCheckBox.isChecked()) {
+            tagArray.add("beach");
+        }
+        if(schoolCheckBox.isChecked()) {
+            tagArray.add("school");
+        }
+        String[] stringArray = new String[tagArray.size()];
+        for(int i = 0; i<tagArray.size(); i++) {
+            stringArray[i] = tagArray.get(i);
+        }
+        return stringArray;
+    }
+
+    public String[] getWeather() {
+        String[] weatherArray = new String[2];
+        if(rainSwitch.isChecked()) {
+            weatherArray[0] = "rainy";
+        } else {
+            weatherArray[0] = "clear";
+        }
+        if(tempSwitch.isChecked()) {
+            weatherArray[1] = "warm";
+        } else {
+            weatherArray[1] = "cool";
+        }
+        return weatherArray;
     }
 
 
@@ -71,10 +149,9 @@ public class AddItemActivity extends AppCompatActivity implements View.OnClickLi
                 Bitmap imageBitmap = (Bitmap) data.getExtras().get("data");
                 newItemImage.setImageBitmap(imageBitmap);
                 String saveFile = saveToInternalStorage(imageBitmap);
+                imageLocation = saveFile;
                 Toast.makeText(AddItemActivity.this, saveFile, Toast.LENGTH_LONG).show();
-                Clothing newItem = new Clothing(saveFile);
-                StorageManager storage = new StorageManager();
-                storage.saveObjectToFile(AddItemActivity.this, AddItemActivity.this, newItem);
+
             }
         }
     }
