@@ -9,6 +9,7 @@ import java.io.Serializable;
 public class Clothing implements Serializable {
     private String clothingType;
     private String imageLocation;
+    private String[] tags;
 
     public Clothing () {
         clothingType = "";
