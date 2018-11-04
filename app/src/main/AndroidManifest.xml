@@ -14,12 +14,11 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/CustomToolbarStyle">
         <activity
             android:name=".ClosetActivity"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar">
-        </activity>
+            android:theme="@style/CustomToolbarStyle" />
         <activity android:name=".AddItemActivity" />
         <activity android:name=".HomeActivity">
             <intent-filter>
@@ -28,6 +27,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".SettingsActivity"
+            android:label="@string/title_activity_settings" />
+        <activity
+            android:name=".AboutActivity"
+            android:label="@string/title_activity_about"
+            android:theme="@style/CustomToolbarStyle"></activity>
     </application>
 
 </manifest>

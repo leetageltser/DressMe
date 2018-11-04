@@ -9,6 +9,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -34,12 +35,28 @@ public class HomeActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_closet,menu);
         return super.onCreateOptionsMenu(menu);
 
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        switch(item.getItemId()){
+            case R.id.settings_about:
+                Intent about = new Intent(this, AboutActivity.class);
+                startActivity(about);
+                break;
+            case R.id.settings_name:
+                Intent settings = new Intent(this, SettingsActivity.class);
+                startActivity(settings);
+                break;
+            case R.id.settings_update:
+                Toast.makeText(getApplicationContext(),"Latest version installed!",Toast.LENGTH_SHORT).show();
+                break;
+            default:
+                //unknown error
+        }
         return super.onOptionsItemSelected(item);
 
     }
