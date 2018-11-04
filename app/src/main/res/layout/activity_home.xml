@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -140,55 +140,172 @@
         app:layout_constraintBottom_toBottomOf="@+id/imageView6"
         app:layout_constraintEnd_toEndOf="@+id/imageView6"
         app:layout_constraintStart_toStartOf="@+id/imageView6" />-->
-    <android.support.v7.widget.GridLayout
-        android:id="@+id/home_gridview"
-        android:layout_width="371dp"
-        android:layout_height="500dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:columnCount="2"
-        tools:rowCount="3">
+    <ImageView
+        android:id="@+id/imageView10"
+        android:layout_width="135dp"
+        android:layout_height="135dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="30dp"
+        app:srcCompat="@drawable/closet_icon" />
 
-        <ImageView
-            android:id="@+id/closetimage"
-            android:layout_width="190dp"
-            android:layout_height="190dp"
-            android:paddingLeft="8dp"
-            android:paddingTop="8dp"
-            android:paddingRight="8dp"
-            android:paddingBottom="8dp"
-            app:layout_column="0"
-            app:layout_row="0"
-            app:srcCompat="@drawable/closet_icon" />
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="144dp"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/imageView10"
+        android:layout_alignEnd="@+id/imageView10"
+        android:layout_alignBottom="@+id/imageView10"
+        android:layout_marginStart="0dp"
+        android:layout_marginEnd="0dp"
+        android:layout_marginBottom="0dp"
+        android:background="#99141414"
+        android:gravity="center_horizontal"
+        android:text="My Closet"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="@android:color/white" />
 
-        <ImageView
-            android:id="@+id/partyimage"
-            android:layout_width="190dp"
-            android:layout_height="190dp"
-            android:paddingLeft="8dp"
-            android:paddingTop="8dp"
-            android:paddingRight="8dp"
-            android:paddingBottom="8dp"
-            app:layout_column="1"
-            app:layout_row="0"
-            app:srcCompat="@drawable/party_icon" />
+    <ImageView
+        android:id="@+id/imageView11"
+        android:layout_width="135dp"
+        android:layout_height="135dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="30dp"
+        android:layout_toEndOf="@+id/imageView10"
+        app:srcCompat="@drawable/party_icon" />
 
-        <ImageView
-            android:id="@+id/businessimage"
-            android:layout_width="190dp"
-            android:layout_height="190dp"
-            android:paddingLeft="8dp"
-            android:paddingTop="8dp"
-            android:paddingRight="8dp"
-            android:paddingBottom="8dp"
-            app:layout_column="0"
-            app:layout_row="5"
-            app:srcCompat="@drawable/business_icon" />
-    </android.support.v7.widget.GridLayout>
-</android.support.constraint.ConstraintLayout>
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="144dp"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/imageView11"
+        android:layout_alignEnd="@+id/imageView11"
+        android:layout_alignBottom="@+id/imageView10"
+        android:layout_marginStart="0dp"
+        android:layout_marginEnd="0dp"
+        android:layout_marginBottom="0dp"
+        android:background="#99141414"
+        android:gravity="center_horizontal"
+        android:text="Party"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="@android:color/white" />
+
+    <ImageView
+        android:id="@+id/imageView12"
+        android:layout_width="135dp"
+        android:layout_height="135dp"
+        android:layout_below="@+id/textView8"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="15dp"
+        app:srcCompat="@drawable/business_icon" />
+
+    <TextView
+        android:id="@+id/textView12"
+        android:layout_width="144dp"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/imageView10"
+        android:layout_alignEnd="@+id/imageView10"
+        android:layout_alignBottom="@+id/imageView12"
+        android:layout_marginStart="0dp"
+        android:layout_marginEnd="0dp"
+        android:layout_marginBottom="0dp"
+        android:background="#99141414"
+        android:gravity="center_horizontal"
+        android:text="Business"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="@android:color/white" />
+
+
+    <ImageView
+        android:id="@+id/imageView14"
+        android:layout_width="135dp"
+        android:layout_height="135dp"
+        android:layout_below="@+id/imageView12"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="15dp"
+        android:layout_toEndOf="@+id/imageView15"
+        app:srcCompat="@drawable/school_icon" />
+
+    <TextView
+        android:id="@+id/textView15"
+        android:layout_width="144dp"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/imageView14"
+        android:layout_alignEnd="@+id/imageView14"
+        android:layout_alignBottom="@+id/imageView15"
+        android:layout_marginStart="0dp"
+        android:layout_marginEnd="0dp"
+        android:layout_marginBottom="0dp"
+        android:background="#99141414"
+        android:gravity="center_horizontal"
+        android:text="School"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="@android:color/white" />
+
+    <ImageView
+        android:id="@+id/imageView15"
+        android:layout_width="135dp"
+        android:layout_height="135dp"
+        android:layout_below="@+id/imageView12"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="30dp"
+        app:srcCompat="@drawable/beach_icon" />
+
+    <TextView
+        android:id="@+id/textView14"
+        android:layout_width="144dp"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/imageView15"
+        android:layout_alignEnd="@+id/imageView15"
+        android:layout_alignBottom="@+id/imageView15"
+        android:layout_marginStart="0dp"
+        android:layout_marginEnd="0dp"
+        android:layout_marginBottom="0dp"
+        android:background="#99141414"
+        android:gravity="center_horizontal"
+        android:text="Beach"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="@android:color/white" />
+
+    <ImageView
+        android:id="@+id/imageView13"
+        android:layout_width="135dp"
+        android:layout_height="135dp"
+        android:layout_below="@+id/textView8"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="30dp"
+        android:layout_toEndOf="@+id/imageView12"
+        app:srcCompat="@drawable/casual_icon" />
+
+    <TextView
+        android:id="@+id/textView13"
+        android:layout_width="144dp"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/imageView13"
+        android:layout_alignEnd="@+id/imageView13"
+        android:layout_alignBottom="@+id/imageView12"
+        android:layout_marginStart="0dp"
+        android:layout_marginEnd="0dp"
+        android:layout_marginBottom="0dp"
+
+        android:background="#99141414"
+        android:gravity="center_horizontal"
+        android:text="Casual"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="@android:color/white" />
+
+</RelativeLayout>
