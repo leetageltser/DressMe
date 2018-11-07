@@ -13,8 +13,12 @@ import android.widget.Toast;
 
 public class HomeActivity extends AppCompatActivity {
 
-    ImageView myClosetImage;
-    ImageView partyImage;
+    private ImageView myClosetImage;
+    private ImageView partyImage;
+    private ImageView businessImage;
+    private ImageView casualImage;
+    private ImageView beachImage;
+    private ImageView schoolImage;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,7 +33,8 @@ public class HomeActivity extends AppCompatActivity {
             }
         } );
 
-        myClosetImage.setOnClickListener(new View.OnClickListener() {
+        partyImage = (ImageView) findViewById(R.id.imageView11);
+        partyImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(HomeActivity.this, OutfitActivity.class);
@@ -38,7 +43,45 @@ public class HomeActivity extends AppCompatActivity {
             }
         } );
 
-        partyImage = (ImageView) findViewById(R.id.imageView11);
+        businessImage = (ImageView) findViewById(R.id.imageView12);
+        businessImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(HomeActivity.this, OutfitActivity.class);
+                i.putExtra("Occasion", "business");
+                startActivity(i);
+            }
+        } );
+
+        casualImage = (ImageView) findViewById(R.id.imageView13);
+        casualImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(HomeActivity.this, OutfitActivity.class);
+                i.putExtra("Occasion", "casual");
+                startActivity(i);
+            }
+        } );
+
+        beachImage = (ImageView) findViewById(R.id.imageView15);
+        beachImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(HomeActivity.this, OutfitActivity.class);
+                i.putExtra("Occasion", "beach");
+                startActivity(i);
+            }
+        } );
+
+        schoolImage = (ImageView) findViewById(R.id.imageView14);
+        schoolImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(HomeActivity.this, OutfitActivity.class);
+                i.putExtra("Occasion", "school");
+                startActivity(i);
+            }
+        } );
 
         Toolbar toolbar =  (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
