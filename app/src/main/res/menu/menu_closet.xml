@@ -9,7 +9,17 @@
         app:showAsAction="never" />-->
     <item
         android:id="@+id/settings_name"
-        android:title=""
+        android:title="@string/settings_name"
+        app:showAsAction="never">
+    </item>
+    <item
+        android:id="@+id/settings_about"
+        android:title="@string/settings_about"
+        app:showAsAction="never">
+    </item>
+    <item
+        android:id="@+id/settings_update"
+        android:title="@string/settings_update"
         app:showAsAction="never">
     </item>
 </menu>
