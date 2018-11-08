@@ -57,6 +57,18 @@ public class Clothing implements Serializable {
         isAccessory = true;
     }
 
+    public boolean isTop() {
+        return isTop;
+    }
+
+    public boolean isBottom() {
+        return isBottom;
+    }
+
+    public boolean isAccessory() {
+        return isAccessory;
+    }
+
     public String getImageLocation() {
         return imageLocation;
     }

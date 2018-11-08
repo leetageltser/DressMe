@@ -9,7 +9,7 @@
     <TextView
         android:id="@+id/occasionTextView"
         android:layout_width="231dp"
-        android:layout_height="66dp"
+        android:layout_height="53dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
@@ -25,32 +25,25 @@
         app:layout_constraintVertical_bias="0.016" />
 
     <HorizontalScrollView
+        android:id="@+id/accessoryScroll"
         android:layout_width="327dp"
-        android:layout_height="131dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_height="140dp"
+        android:layout_marginBottom="4dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="4dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.51"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.195">
 
         <LinearLayout
+            android:id="@+id/accessoryLinear"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:orientation="vertical">
-
-            <ImageView
-                android:id="@+id/topImageView"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                app:srcCompat="@drawable/sample_1"
-                android:contentDescription="@string/top_article_of_clothing" />
-        </LinearLayout>
-
-
+            android:orientation="horizontal"></LinearLayout>
     </HorizontalScrollView>
 
     <HorizontalScrollView
@@ -68,16 +61,10 @@
         app:layout_constraintVertical_bias="0.951">
 
         <LinearLayout
+            android:id="@+id/bottomLinear"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-            <ImageView
-                android:id="@+id/bottomImageView"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                app:srcCompat="@drawable/sample_2"
-                android:contentDescription="@string/bottom_article_of_clothing" />
-        </LinearLayout>
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"></LinearLayout>
     </HorizontalScrollView>
 
     <HorizontalScrollView
@@ -94,17 +81,27 @@
         app:layout_constraintVertical_bias="0.291">
 
         <LinearLayout
+            android:id="@+id/topLinear"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:orientation="vertical">
-
-            <ImageView
-                android:id="@+id/accessoryImageView"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                app:srcCompat="@drawable/sample_1"
-                android:contentDescription="@string/accessory_item" />
-        </LinearLayout>
+            android:backgroundTint="@color/horizontalScroll"
+            android:orientation="horizontal"></LinearLayout>
     </HorizontalScrollView>
+
+    <TextView
+        android:id="@+id/accessoryTextView"
+        android:layout_width="261dp"
+        android:layout_height="26dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/accessories"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.205"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.097" />
 
 </android.support.constraint.ConstraintLayout>
