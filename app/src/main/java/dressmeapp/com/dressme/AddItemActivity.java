@@ -1,5 +1,6 @@
 package dressmeapp.com.dressme;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.ContextWrapper;
 import android.content.Intent;
@@ -40,6 +41,30 @@ public class AddItemActivity extends AppCompatActivity implements View.OnClickLi
     private String imageLocation;
     private String rainOrShine;
     private String warmOrCold;
+    View.OnClickListener top_button_listener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            bottomRad.setChecked(false);
+            accessoryRad.setChecked(false);
+            topRad.setChecked(true);
+        }
+    };
+    View.OnClickListener bottom_listener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            bottomRad.setChecked(true);
+            accessoryRad.setChecked(false);
+            topRad.setChecked(false);
+        }
+    };
+    View.OnClickListener accessory_listener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            bottomRad.setChecked(false);
+            accessoryRad.setChecked(true);
+            topRad.setChecked(false);
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,8 +88,11 @@ public class AddItemActivity extends AppCompatActivity implements View.OnClickLi
         tempSwitch = (Switch) findViewById(R.id.tempSwitch);
 
         topRad = (RadioButton) findViewById(R.id.topButton);
+        topRad.setOnClickListener(top_button_listener);
         bottomRad = (RadioButton) findViewById(R.id.bottomButton);
+        bottomRad.setOnClickListener(bottom_listener);
         accessoryRad = (RadioButton) findViewById(R.id.accessoryButton);
+        accessoryRad.setOnClickListener(accessory_listener);
 
         addItemButton = (Button) findViewById(R.id.addToClosetButton);
         addItemButton.setOnClickListener(new View.OnClickListener() {
@@ -89,6 +117,9 @@ public class AddItemActivity extends AppCompatActivity implements View.OnClickLi
                     StorageManager storage = new StorageManager();
                     storage.saveObjectToFile(AddItemActivity.this, AddItemActivity.this, newItem);
                     Toast.makeText(AddItemActivity.this, "Added Item", Toast.LENGTH_LONG).show();
+                    Intent returnIntent = new Intent();
+                    setResult(Activity.RESULT_OK, returnIntent);
+                    finish();
                 }
             }
         });

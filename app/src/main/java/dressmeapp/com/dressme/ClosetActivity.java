@@ -1,5 +1,6 @@
 package dressmeapp.com.dressme;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -38,10 +39,26 @@ public class ClosetActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(ClosetActivity.this, AddItemActivity.class);
-                startActivity(i);
+                startActivityForResult(i, ADD_NEW_ITEM);
             }
         });
 
+        loadImages();
+    }
+
+    static final int ADD_NEW_ITEM = 1;
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        switch(requestCode) {
+            case(ADD_NEW_ITEM): {
+                if (resultCode == Activity.RESULT_OK) {
+                    loadImages();
+                }
+                break;
+            }
+        }
+    }
+
+    public void loadImages() {
         storage = new StorageManager();
 
         itemArray = storage.loadClothingItems(ClosetActivity.this);
