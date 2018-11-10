@@ -13,6 +13,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.Switch;
@@ -35,6 +36,8 @@ public class AddItemActivity extends AppCompatActivity implements View.OnClickLi
     private ImageView uploadImageView;
     private String downloadUrlString;
     private ImageView newItemImage;
+    private EditText descriptionEditText;
+    private String descriptionString;
     private CheckBox partyCheckBox, businessCheckBox, casualCheckBox, beachCheckBox, schoolCheckBox;
     private Switch rainSwitch, tempSwitch;
     private RadioButton topRad, bottomRad, accessoryRad;
@@ -78,6 +81,9 @@ public class AddItemActivity extends AppCompatActivity implements View.OnClickLi
                 dispatchTakePictureIntent();
             }
         });
+
+        descriptionEditText = (EditText) findViewById(R.id.descriptionEdit);
+
         partyCheckBox = (CheckBox) findViewById(R.id.partyCheckBox);
         businessCheckBox = (CheckBox) findViewById(R.id.businessCheckBox);
         casualCheckBox = (CheckBox) findViewById(R.id.casualCheckBox);
@@ -105,8 +111,10 @@ public class AddItemActivity extends AppCompatActivity implements View.OnClickLi
                     String[] tags = getTags();
                     String[] weather = getWeather();
                     Clothing newItem = new Clothing(imageLocation);
+                    descriptionString = descriptionEditText.getText().toString();
                     newItem.setTags(tags);
                     newItem.setWeather(weather);
+                    newItem.setClothingType(descriptionString);
                     if(topRad.isChecked()) {
                         newItem.setToTop();
                     } else if(bottomRad.isChecked()) {

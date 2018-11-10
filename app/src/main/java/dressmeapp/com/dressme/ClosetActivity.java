@@ -69,7 +69,11 @@ public class ClosetActivity extends AppCompatActivity {
         gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View v,
                                     int position, long id) {
-                Toast.makeText(ClosetActivity.this, "Hello" + position,
+                String description = itemArray.get(position).getClothingType();
+                if(description.length() == 0) {
+                    description = "no description";
+                }
+                Toast.makeText(ClosetActivity.this, description,
                         Toast.LENGTH_SHORT).show();
             }
         });
